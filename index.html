@@ -284,10 +284,21 @@
   }
   footer b{color:var(--text);}
   footer .dot{margin:0 8px;opacity:0.5;}
+  footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;transition:color .2s;}
+  footer a:hover{color:var(--amber-2);}
 
   @media (max-width:420px){
     h1{font-size:36px;}
     .tf-embed{height:600px;}
+  }
+  @media (max-width:768px){
+    /* Typeform's mobile embed switches to a fixed, fullscreen overlay. Any
+       ancestor with `perspective` becomes its containing block, which
+       traps it inside our rounded/overflow:hidden cards and makes the
+       form appear to vanish on phones (works on desktop because the
+       widget just stays inline there). Drop the 3D perspective context
+       on mobile so the overlay positions against the real viewport. */
+    .wrap{perspective:none;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
@@ -392,7 +403,7 @@
   <p class="form-note">Your info goes straight to Husky — no spam, ever.</p>
 
   <footer>
-    <b>HUSKY</b><span class="dot">·</span>@_huskyfitness
+    <b>HUSKY</b><span class="dot">·</span><a href="https://www.instagram.com/_huskyfitness/" target="_blank" rel="noopener noreferrer">@_huskyfitness</a>
   </footer>
 
 </div>
