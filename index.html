@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Husky Fitness | Online Coaching for Muslim Men</title>
+<meta name="description" content="Husky Fitness — online coaching for Muslim men who want to build their dream physique without compromising their deen. Apply for 1-on-1 coaching." />
+<style>
+  :root{
+    --bg:#181009;
+    --bg-2:#241708;
+    --amber:#f0913f;
+    --amber-2:#ffc27a;
+    --cream:#fff2de;
+    --text:#f9f2e9;
+    --muted:#c9baa8;
+    --card:rgba(255,255,255,0.055);
+    --card-border:rgba(255,255,255,0.12);
+    --glow:rgba(255,180,90,0.5);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    position:relative;
+    background:
+      radial-gradient(ellipse 1000px 620px at 15% -10%, rgba(255,194,122,0.42), transparent 60%),
+      radial-gradient(ellipse 900px 640px at 108% 6%, rgba(240,145,63,0.34), transparent 58%),
+      radial-gradient(ellipse 1000px 780px at 50% 48%, rgba(255,150,70,0.16), transparent 62%),
+      radial-gradient(ellipse 900px 680px at 50% 108%, rgba(255,194,122,0.24), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg-2));
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;opacity:0.55;
+    background:conic-gradient(from 0deg at 50% 50%, rgba(255,178,90,0.0), rgba(255,178,90,0.25), rgba(255,120,60,0.0) 30%, rgba(255,210,150,0.18) 55%, rgba(255,178,90,0.0) 75%);
+    animation:spin 26s linear infinite; filter:blur(60px);
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+  .orb-1{width:380px;height:380px;top:-80px;left:-100px;background:radial-gradient(circle,rgba(255,194,122,0.45),transparent 70%);animation:driftA 16s ease-in-out infinite;}
+  .orb-2{width:440px;height:440px;top:40%;right:-160px;background:radial-gradient(circle,rgba(240,145,63,0.38),transparent 70%);animation:driftB 19s ease-in-out infinite;}
+  .orb-3{width:320px;height:320px;bottom:-60px;left:20%;background:radial-gradient(circle,rgba(255,242,222,0.24),transparent 70%);animation:driftA 14s ease-in-out infinite reverse;}
+  @keyframes driftA{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,40px) scale(1.14);}}
+  @keyframes driftB{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,-25px) scale(1.1);}}
+
+  .particle{position:fixed;border-radius:50%;background:radial-gradient(circle, rgba(255,220,170,0.9), rgba(255,220,170,0));pointer-events:none;z-index:1;animation:floatUp linear infinite;}
+  @keyframes floatUp{
+    0%{transform:translate3d(0,0,0) scale(0.6);opacity:0;}
+    10%{opacity:1;}
+    90%{opacity:0.8;}
+    100%{transform:translate3d(var(--dx,20px),-620px,0) scale(1);opacity:0;}
+  }
+
+  .wrap{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:0 22px 80px;perspective:1400px;}
+  a{color:inherit;}
+
+  .reveal{opacity:0;transform:translateY(30px) rotateX(6deg);transform-origin:top center;transition:opacity .85s cubic-bezier(.2,.7,.3,1), transform .85s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0) rotateX(0deg);}
+
+  .badge{
+    display:flex;align-items:center;gap:10px;
+    width:fit-content;margin:36px auto 30px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid var(--card-border);
+    border-radius:999px;
+    padding:6px 18px 6px 6px;
+    animation:fadeIn .9s ease both;
+    box-shadow:0 8px 24px -12px rgba(255,178,90,0.35);
+  }
+  .badge img{
+    width:40px;height:40px;border-radius:999px;object-fit:cover;
+    border:1px solid rgba(255,255,255,0.22);
+    animation:floatY 4.5s ease-in-out infinite;
+  }
+  @keyframes floatY{0%,100%{transform:translateY(0) rotateZ(0deg);}50%{transform:translateY(-4px) rotateZ(3deg);}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+  .badge .name{font-weight:700;font-size:14px;letter-spacing:0.02em;}
+  .badge .role{font-size:12px;color:var(--muted);margin-top:1px;}
+
+  .eyebrow{
+    text-align:center;
+    color:var(--amber-2);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    animation:fadeIn 1s ease both .05s;
+  }
+  h1{
+    text-align:center;
+    font-size:44px;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    font-weight:800;
+    margin:0 0 20px;
+    text-wrap:balance;
+    animation:fadeIn 1s ease both .1s;
+  }
+  h1 .hl{
+    background:linear-gradient(100deg, var(--amber-2), var(--cream) 50%, var(--amber-2));
+    background-size:200% auto;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shine 4s linear infinite;
+  }
+  @keyframes shine{to{background-position:200% center;}}
+  .lede{
+    text-align:center;
+    color:var(--muted);
+    font-size:16.5px;
+    line-height:1.6;
+    max-width:520px;
+    margin:0 auto 30px;
+    animation:fadeIn 1s ease both .18s;
+  }
+  .lede b{color:var(--text);}
+
+  .cta-row{display:flex;justify-content:center;margin-bottom:46px;animation:fadeIn 1s ease both .26s;}
+  .btn{
+    display:inline-block;
+    background:linear-gradient(180deg,#ffc27a,#e2792b);
+    color:#20120a;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:16px 34px;
+    border-radius:999px;
+    box-shadow:0 0 0 1px rgba(255,194,122,0.45), 0 14px 38px -10px rgba(240,145,63,0.85);
+    transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease;
+    animation:pulseGlow 3s ease-in-out infinite;
+    transform-style:preserve-3d;
+  }
+  .btn:hover{transform:translateY(-4px) scale(1.04) rotateX(6deg);box-shadow:0 0 0 1px rgba(255,194,122,0.6), 0 20px 46px -10px rgba(240,145,63,0.95);}
+  @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 1px rgba(255,194,122,0.45), 0 14px 38px -10px rgba(240,145,63,0.7);}50%{box-shadow:0 0 0 1px rgba(255,194,122,0.65), 0 16px 50px -8px rgba(240,145,63,1);}}
+
+  .hero-frame{
+    position:relative;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid var(--card-border);
+    box-shadow:0 30px 70px -25px rgba(0,0,0,0.65), 0 0 60px -20px var(--glow);
+    margin-bottom:14px;
+    transform-style:preserve-3d;
+    transition:transform .25s ease-out, box-shadow .25s ease-out;
+    will-change:transform;
+    min-height:320px;
+  }
+  .hero-frame img{
+    display:block;width:100%;height:auto;
+    max-height:560px;object-fit:cover;
+    filter:saturate(1.15) contrast(1.08) brightness(1.08);
+  }
+  .hero-frame::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(24,16,9,0) 50%, rgba(24,16,9,0.85) 100%);
+  }
+  .hero-cap{
+    position:absolute;left:18px;right:18px;bottom:16px;
+    font-size:13px;color:#fbf2e6;
+    z-index:2;
+  }
+  .hero-cap b{color:#fff;}
+
+  .imgbox{position:relative;width:100%;height:100%;}
+  .imgbox img{width:100%;height:100%;}
+  .imgbox .fallback{
+    display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:10px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,194,122,0.35), transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(240,145,63,0.3), transparent 55%),
+      linear-gradient(160deg, #2a1a0d, #1a1108);
+    color:var(--amber-2);text-align:center;padding:20px;
+  }
+  .imgbox.broken .fallback{display:flex;}
+  .imgbox.broken img{display:none;}
+  .fallback svg{width:34px;height:34px;opacity:0.85;}
+  .fallback span{font-size:12.5px;color:var(--muted);max-width:220px;line-height:1.4;}
+  .hero-frame .imgbox{min-height:320px;}
+  .hero-frame .imgbox .fallback{min-height:320px;}
+
+  .section-eyebrow{
+    text-align:center;color:var(--amber-2);
+    font-size:11.5px;font-weight:700;letter-spacing:0.2em;
+    text-transform:uppercase;margin:64px 0 10px;
+  }
+  .section-title{
+    text-align:center;font-size:26px;font-weight:800;
+    margin:0 0 8px;letter-spacing:-0.01em;
+  }
+  .section-sub{
+    text-align:center;color:var(--muted);font-size:15px;
+    max-width:440px;margin:0 auto 28px;line-height:1.55;
+  }
+
+  .gallery{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;
+  }
+  .gallery figure{
+    margin:0;position:relative;border-radius:16px;overflow:hidden;
+    border:1px solid var(--card-border);aspect-ratio:3/4;
+    transform-style:preserve-3d;
+    transition:transform .25s ease-out, box-shadow .25s ease-out;
+    will-change:transform;
+    box-shadow:0 18px 40px -20px rgba(0,0,0,0.6);
+  }
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.08);}
+  .gallery figcaption{
+    position:absolute;left:10px;right:10px;bottom:10px;
+    font-size:11.5px;font-weight:600;color:#f9f2e9;
+    text-shadow:0 2px 8px rgba(0,0,0,0.8);
+    z-index:2;
+  }
+  .gallery figure::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.78) 100%);
+    z-index:1;pointer-events:none;
+  }
+
+  .points{
+    display:flex;flex-direction:column;gap:14px;margin:30px 0 10px;
+  }
+  .point{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:16px 18px;
+    transform-style:preserve-3d;
+    transition:transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  }
+  .point:hover{transform:translateY(-5px) rotateX(3deg);border-color:rgba(240,145,63,0.45);background:rgba(255,255,255,0.08);box-shadow:0 16px 32px -18px rgba(240,145,63,0.5);}
+  .point .num{
+    flex:0 0 auto;width:28px;height:28px;border-radius:999px;
+    background:rgba(240,145,63,0.22);color:var(--amber-2);
+    font-size:13px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(240,145,63,0.45);
+  }
+  .point .txt b{display:block;font-size:15px;margin-bottom:2px;}
+  .point .txt span{font-size:13.5px;color:var(--muted);line-height:1.5;}
+
+  .form-card{
+    margin-top:20px;
+    border-radius:24px;
+    border:1px solid rgba(240,145,63,0.4);
+    background:linear-gradient(180deg, rgba(255,194,122,0.14), rgba(255,255,255,0.02));
+    box-shadow:0 0 0 1px rgba(240,145,63,0.14), 0 0 70px -10px rgba(240,145,63,0.4), 0 30px 60px -30px rgba(0,0,0,0.8);
+    padding:10px;
+    transform-style:preserve-3d;
+    transition:transform .25s ease-out;
+    position:relative;
+    overflow:hidden;
+  }
+  .form-card::before{
+    content:"";position:absolute;inset:-2px;border-radius:26px;z-index:0;pointer-events:none;
+    background:conic-gradient(from 0deg, rgba(255,194,122,0), rgba(255,194,122,0.5), rgba(255,194,122,0));
+    animation:spin 6s linear infinite;
+    opacity:0.6;
+  }
+  .form-inner{
+    position:relative;z-index:1;
+    border-radius:18px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#1f140b,#170e07);
+    box-shadow:inset 0 0 0 1px rgba(240,145,63,0.2);
+  }
+  .tf-embed{width:100%;height:560px;border:0;display:block;}
+  .form-note{
+    text-align:center;color:var(--muted);font-size:12.5px;
+    margin-top:14px;
+  }
+
+  footer{
+    text-align:center;margin-top:70px;
+    color:var(--muted);font-size:12.5px;letter-spacing:0.02em;
+  }
+  footer b{color:var(--text);}
+  footer .dot{margin:0 8px;opacity:0.5;}
+
+  @media (max-width:420px){
+    h1{font-size:36px;}
+    .tf-embed{height:600px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div id="particles"></div>
+
+<div class="wrap">
+
+  <div class="badge">
+    <img src="assets/profile.jpg" alt="Husky" />
+    <div>
+      <div class="name">HUSKY</div>
+      <div class="role">Online Fitness Coach</div>
+    </div>
+  </div>
+
+  <div class="eyebrow">Coaching for Muslim Men</div>
+  <h1>Build Your Dream Physique <span class="hl">Without Compromising Your Deen</span></h1>
+  <p class="lede">
+    No 47-exercise programs. No gimmicks. No cutting corners on your deen for the sake of gains.
+    Just a simple, structured system for building strength, discipline and the physique you've
+    always wanted — built by a brother, for brothers.
+  </p>
+  <div class="cta-row">
+    <a class="btn" href="#apply">Apply For Coaching</a>
+  </div>
+
+  <div class="hero-frame tilt">
+    <div class="imgbox" data-fallback-text="Training photo coming soon">
+      <img src="assets/shot1.jpg" alt="Husky training in the gym" onerror="this.parentElement.classList.add('broken')" />
+      <div class="fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <span>Training photo coming soon</span>
+      </div>
+    </div>
+    <div class="hero-cap"><b>Discipline over motivation.</b> Every rep, every set, every sujood.</div>
+  </div>
+
+  <div class="section-eyebrow reveal">Real Results</div>
+  <div class="section-title reveal">The Physique Speaks For Itself</div>
+  <p class="section-sub reveal">Consistency compounds. This is what a real plan, followed for real, looks like.</p>
+
+  <div class="gallery reveal">
+    <figure class="tilt">
+      <div class="imgbox">
+        <img src="assets/physique1.jpg" alt="Husky physique progress" onerror="this.parentElement.classList.add('broken')" />
+        <div class="fallback">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span>Reel coming soon</span>
+        </div>
+      </div>
+      <figcaption>Built through consistent training — no shortcuts</figcaption>
+    </figure>
+    <figure class="tilt">
+      <div class="imgbox">
+        <img src="assets/physique2.jpg" alt="Husky training session" onerror="this.parentElement.classList.add('broken')" />
+        <div class="fallback">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span>Reel coming soon</span>
+        </div>
+      </div>
+      <figcaption>The result of showing up, every single day</figcaption>
+    </figure>
+  </div>
+
+  <div class="section-eyebrow reveal">The Approach</div>
+  <div class="section-title reveal">What Coaching Includes</div>
+
+  <div class="points reveal">
+    <div class="point">
+      <div class="num">1</div>
+      <div class="txt"><b>A plan built around your life</b><span>Training and meals structured around your prayer times, work and schedule — not the other way round.</span></div>
+    </div>
+    <div class="point">
+      <div class="num">2</div>
+      <div class="txt"><b>Straight-talk coaching, no fluff</b><span>Weekly check-ins, form feedback and honest accountability — direct from me, not an app.</span></div>
+    </div>
+    <div class="point">
+      <div class="num">3</div>
+      <div class="txt"><b>Discipline as worship</b><span>We train the body the same way we train the soul — consistency, intention, and showing up on the hard days.</span></div>
+    </div>
+  </div>
+
+  <div id="apply" class="section-eyebrow reveal" style="margin-top:70px;">Apply Now</div>
+  <div class="section-title reveal">Ready To Commit?</div>
+  <p class="section-sub reveal">Takes 30 seconds. I read every application myself and reply personally.</p>
+
+  <div class="form-card reveal tilt">
+    <div class="form-inner">
+      <div data-tf-widget="eMBOYTA4" data-tf-opacity="100" data-tf-iframe-props="title=Husky Fitness — Coaching Application" data-tf-transitive-search-params style="width:100%;height:560px;"></div>
+      <script src="https://embed.typeform.com/next/embed.js"></script>
+    </div>
+  </div>
+  <p class="form-note">Your info goes straight to Husky — no spam, ever.</p>
+
+  <footer>
+    <b>HUSKY</b><span class="dot">·</span>@_huskyfitness
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  (function(){
+    if(!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var tilts = document.querySelectorAll('.tilt');
+    tilts.forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        var rx = (-y * 9).toFixed(2);
+        var ry = (x * 11).toFixed(2);
+        el.style.transform = 'perspective(1000px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(1.02)';
+      });
+      el.addEventListener('mouseleave', function(){
+        el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+      });
+    });
+  })();
+
+  (function(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var host = document.getElementById('particles');
+    var count = window.innerWidth < 480 ? 10 : 18;
+    for(var i=0;i<count;i++){
+      var p = document.createElement('div');
+      p.className = 'particle';
+      var size = 2 + Math.random()*4;
+      p.style.width = size+'px';
+      p.style.height = size+'px';
+      p.style.left = (Math.random()*100)+'vw';
+      p.style.bottom = '-20px';
+      p.style.setProperty('--dx', (Math.random()*80-40)+'px');
+      p.style.animationDuration = (10 + Math.random()*12)+'s';
+      p.style.animationDelay = (Math.random()*14)+'s';
+      host.appendChild(p);
+    }
+  })();
+</script>
+
+</body>
+</html>
