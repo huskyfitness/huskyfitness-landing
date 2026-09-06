@@ -20,7 +20,7 @@
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
   body{
     position:relative;
     background:
@@ -32,7 +32,6 @@
     color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
 
   .aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;opacity:0.55;
@@ -273,6 +272,7 @@
     box-shadow:inset 0 0 0 1px rgba(240,145,63,0.2);
   }
   .tf-embed{width:100%;height:560px;border:0;display:block;}
+  .form-inner iframe{border-radius:18px;}
   .form-note{
     text-align:center;color:var(--muted);font-size:12.5px;
     margin-top:14px;
@@ -292,13 +292,18 @@
     .tf-embed{height:600px;}
   }
   @media (max-width:768px){
-    /* Typeform's mobile embed switches to a fixed, fullscreen overlay. Any
-       ancestor with `perspective` becomes its containing block, which
-       traps it inside our rounded/overflow:hidden cards and makes the
-       form appear to vanish on phones (works on desktop because the
-       widget just stays inline there). Drop the 3D perspective context
-       on mobile so the overlay positions against the real viewport. */
+    /* Typeform's mobile embed expands into a fixed, fullscreen overlay
+       once you tap "Start". Mobile Safari/Chrome can clip a fixed
+       descendant that sits inside ANY ancestor with overflow:hidden
+       (with or without a transform/perspective context), and this card
+       stack has two: .form-card and .form-inner. Combined with `.wrap`'s
+       perspective (which also creates a containing block for fixed
+       elements on spec-compliant engines), the overlay was getting
+       trapped and clipped down to nothing — which is why the form
+       "disappeared" only on phones, never on desktop. */
     .wrap{perspective:none;}
+    .form-card{overflow:visible;}
+    .form-inner{overflow:visible;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
